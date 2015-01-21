@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: bellinati
- * Date: 21/01/2015
- * Time: 17:38
- */
 
 namespace KairosCore\Service;
 

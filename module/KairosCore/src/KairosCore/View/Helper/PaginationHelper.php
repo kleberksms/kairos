@@ -1,6 +1,6 @@
 <?php
 
-namespace Application\View\Helper;
+namespace KairosCore\View\Helper;
 
 use Zend\View\Helper\AbstractHelper;
 

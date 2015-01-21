@@ -137,21 +137,11 @@ class Ticket extends AbstractEntity
      */
     protected $reopening;
 
-    /**
-     * @var datetime
-     * @ORM\Column(type="datetime")
-     */
-    protected $created;
-
-    /**
-     * @var datetime
-     * @ORM\Column(type="datetime")
-     */
-    protected $modified;
 
     public function __construct()
     {
-
+        parent::__construct(new \DateTime("now"));
+        return;
     }
 
     /**
@@ -200,22 +190,6 @@ class Ticket extends AbstractEntity
     public function setCountersigning($countersigning)
     {
         $this->countersigning = $countersigning;
-    }
-
-    /**
-     * @return datetime
-     */
-    public function getCreated()
-    {
-        return $this->created;
-    }
-
-    /**
-     * @param datetime $created
-     */
-    public function setCreated($created)
-    {
-        $this->created = $created;
     }
 
     /**
@@ -378,21 +352,6 @@ class Ticket extends AbstractEntity
         $this->is_active = $is_active;
     }
 
-    /**
-     * @return datetime
-     */
-    public function getModified()
-    {
-        return $this->modified;
-    }
-
-    /**
-     * @param datetime $modified
-     */
-    public function setModified($modified)
-    {
-        $this->modified = $modified;
-    }
 
     /**
      * @return int

@@ -13,5 +13,5 @@ if (php_sapi_name() === 'cli-server' && is_file(__DIR__ . parse_url($_SERVER['RE
 // Setup autoloading
 require 'init_autoloader.php';
 
-// Run the kairos-ticket!
-Zend\Mvc\Application::init(require 'config/kairos-ticket.config.php')->run();
+// Run the application!
+Zend\Mvc\Application::init(require 'config/application.config.php')->run();

@@ -1,14 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: bellinati
- * Date: 21/01/2015
- * Time: 15:58
- */
 
 namespace KairosSprint\Service;
+use KairosCore\Service\AbstractService as AbstractServiceCore;
+use Doctrine\ORM\EntityManager;
 
-
-class AbstractService {
-
+class AbstractService extends AbstractServiceCore
+{
+    public function __construct(EntityManager $em)
+    {
+        parent::__construct($em);
+    }
 } 

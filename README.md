@@ -11,10 +11,10 @@ mudanças no software e apontamentos de bugs.
 Exemplo de configuração do apache
 
     <VirtualHost *:80>
-        ServerName zf2-tutorial.localhost
-        DocumentRoot /path/to/zf2-tutorial/public
+        ServerName kairos.localhost
+        DocumentRoot /path/to/kairos/public
         SetEnv APPLICATION_ENV "development"
-        <Directory /path/to/zf2-tutorial/public>
+        <Directory /path/to/kairos/public>
             DirectoryIndex index.php
             AllowOverride All
             Order allow,deny

@@ -33,4 +33,17 @@ class AbstractEntityRepository extends EntityRepository
 
     }
 
+    public function fetchParis()
+    {
+        $entities = $this->findAll();
+
+        $array = array();
+
+        foreach($entities as $entity) {
+            $array[$entity->getId()] = $entity->getName();
+        }
+
+        return $array;
+    }
+
 } 

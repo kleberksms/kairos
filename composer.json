@@ -7,7 +7,12 @@
         "kairos",
         "zf2"
     ],
-    "homepage": "http://framework.zend.com/",
+    "homepage": "https://github.com/kleberksms/kairos",
+    "authors": [
+        {
+            "name": "Kleber Syd Moraes da Silva"
+        }
+    ],
     "minimum-stability":"dev",
     "require": {
         "php": ">=5.3.3",
@@ -15,6 +20,16 @@
         "doctrine/doctrine-orm-module":"dev-master"
     },
     "require-dev": {
-        "zendframework/zend-developer-tools": "dev-master"
+        "zendframework/zend-developer-tools": "dev-master",
+        "phpunit/phpunit": "4.*",
+        "mockery/mockery": "dev-master"
+    },
+    "suggest": {
+        "guzzlehttp/guzzle": "Allows for implementation of the Guzzle HTTP client"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tecnospeed\\": "src/Tecnospeed/"
+        }
     }
 }

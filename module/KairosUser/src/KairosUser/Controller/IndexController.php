@@ -1,14 +1,14 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: bellinati
- * Date: 21/01/2015
- * Time: 16:01
- */
 
 namespace KairosUser\Controller;
 
+use Zend\Mvc\Controller\AbstractActionController;
+use Zend\View\Model\ViewModel;
 
-class IndexController {
-
-} 
+class IndexController extends AbstractActionController
+{
+    public function indexAction()
+    {
+        return new ViewModel();
+    }
+}

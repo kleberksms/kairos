@@ -5,7 +5,12 @@ return array(
         'Application',
         'DoctrineModule',
         'DoctrineORMModule',
+        'KairosCustomer',
+        'KairosFile',
+        'KairosSoftware',
+        'KairosSprint',
         'KairosTicket',
+        'KairosUser',
         'ZendDeveloperTools',
     ),
 

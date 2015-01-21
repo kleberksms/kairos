@@ -1,7 +1,7 @@
 <?php
 
 
-namespace KairosTicket;
+namespace KairosCustomer;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;

@@ -31,10 +31,10 @@ class Ticket extends AbstractEntity
     protected $software;
 
     /**
-     * join with bank
+     * join with customer
      * @var int
      */
-    protected $bank;
+    protected $customer;
 
     /**
      * join with created => user
@@ -147,17 +147,17 @@ class Ticket extends AbstractEntity
     /**
      * @return int
      */
-    public function getBank()
+    public function getCustomer()
     {
-        return $this->bank;
+        return $this->customer;
     }
 
     /**
-     * @param int $bank
+     * @param int $customer
      */
-    public function setBank($bank)
+    public function setCustomer($customer)
     {
-        $this->bank = $bank;
+        $this->customer = $customer;
     }
 
     /**

@@ -1,10 +1,11 @@
 <?php
 return array(
-    // This should be an array of module namespaces used in the application.
+    // This should be an array of module namespaces used in the kairos-ticket.
     'modules' => array(
         'Application',
         'DoctrineModule',
         'DoctrineORMModule',
+        'KairosTicket',
         'ZendDeveloperTools',
     ),
 

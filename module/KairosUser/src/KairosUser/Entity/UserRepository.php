@@ -1,6 +1,7 @@
 <?php
 namespace KairosUser\Entity;
 
-class UserRepository {
+class UserRepository extends Abstra
+{
 
 } 

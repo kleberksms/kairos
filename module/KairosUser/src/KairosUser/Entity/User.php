@@ -1,7 +1,13 @@
 <?php
 namespace KairosUser\Entity;
 
-class User
+/**
+ * Class User
+ * @package KairosUser\Entity
+ * @ORM\Entity(repositoryClass="KairosUser\Entity\UserRepository")
+ * @ORM\Table(name="users")
+ */
+class User extends AbstractEntity
 {
 
 } 

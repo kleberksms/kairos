@@ -1,10 +1,10 @@
 <?php
 
 namespace KairosUser\Service;
-use KairosCore\Service\AbstractService as AbstractServiceCore;
+use KairosCore\Service\AbstractService as KairosCoreAbstractService;
 use Doctrine\ORM\EntityManager;
 
-class AbstractService extends AbstractServiceCore
+class AbstractService extends KairosCoreAbstractService
 {
     public function __construct(EntityManager $em)
     {

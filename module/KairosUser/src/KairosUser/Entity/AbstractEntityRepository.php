@@ -1,6 +1,6 @@
 <?php
 
-namespace KairosTicket\Entity;
+namespace KairosUser\Entity;
 
 use KairosCore\Entity\AbstractEntityRepository as KairosCoreAbstractEntityRepository;
 

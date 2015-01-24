@@ -31,27 +31,31 @@ class Ticket extends AbstractEntity
     protected $software;
 
     /**
-     * join with customer
      * @var int
-     */
+     * @OneToOne(targetEntity="User")
+     * @JoinColumn(name="customer_id", referencedColumnName="id")
+     **/
     protected $customer;
 
     /**
-     * join with created => user
      * @var int
-     */
+     * @OneToOne(targetEntity="User")
+     * @JoinColumn(name="creator_id", referencedColumnName="id")
+     **/
     protected $creator;
 
     /**
-     * join with countersigning  => user
      * @var int
-     */
+     * @OneToOne(targetEntity="User")
+     * @JoinColumn(name="countersigning_id", referencedColumnName="id")
+     **/
     protected $countersigning;
 
     /**
-     * join with holder  => user
      * @var int
-     */
+     * @OneToOne(targetEntity="User")
+     * @JoinColumn(name="holder_id", referencedColumnName="id")
+     **/
     protected $holder;
 
     /**
@@ -78,9 +82,10 @@ class Ticket extends AbstractEntity
     protected $ticket;
 
     /**
-     * join with closed => user
      * @var int
-     */
+     * @OneToOne(targetEntity="User")
+     * @JoinColumn(name="closed_by_id", referencedColumnName="id")
+     **/
     protected $closed_by;
 
     /**

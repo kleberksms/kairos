@@ -5,6 +5,7 @@ return array(
         'Application',
         'DoctrineModule',
         'DoctrineORMModule',
+        'KairosCore',
 //        'KairosCustomer',
 //        'KairosFile',
 //        'KairosSoftware',

@@ -9,14 +9,22 @@ class AbstractEntity
 {
 
     /**
+     * @var int
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue
+     */
+    protected $id;
+
+    /**
      *@ORM\Column(type="string")
      */
-    protected $timezone;
+    private $timezone;
 
     /**
      * @var bool
      */
-    protected $localized = false;
+    private $localized = false;
 
     /**
      * @var \Datetime
@@ -36,6 +44,24 @@ class AbstractEntity
         $this->created = $createDate;
         $this->timezone = $createDate->getTimeZone()->getName();
     }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+
 
     public function getCreated()
     {

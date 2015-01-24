@@ -1,6 +1,6 @@
 <?php
 namespace KairosUser\Entity;
-
+use Doctrine\ORM\Mapping as ORM;
 /**
  * Class User
  * @package KairosUser\Entity
@@ -10,12 +10,7 @@ namespace KairosUser\Entity;
 class User extends AbstractEntity implements UserInterface
 {
 
-    /**
-     * @var int
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue
-     */
-    private $id;
+
 
     /**
      * @var string
@@ -35,21 +30,7 @@ class User extends AbstractEntity implements UserInterface
      */
     private $address;
 
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
-    /**
-     * @param int $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
 
     /**
      * @return string

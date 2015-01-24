@@ -80,14 +80,14 @@ return array(
     ),
     'doctrine' => array(
         'driver' => array(
-            'bookstore_entities' => array(
+            'kairos_user_entities' => array(
                 'class' =>'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
                 'cache' => 'array',
-                'paths' => array(__DIR__ . '/../src/'.__NAMESPACE__.'/Entity')
+                'paths' => array(__DIR__ . '/../src/KairosUser/Entity')
             ),
             'orm_default' => array(
                 'drivers' => array(
-                    __NAMESPACE__.'\Entity' => __NAMESPACE__.'_driver'
+                    'KairosUser\Entity' => 'kairos_user_entities'
                 )
             )
         )

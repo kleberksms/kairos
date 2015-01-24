@@ -10,7 +10,7 @@ return array(
 //        'KairosFile',
 //        'KairosSoftware',
 //        'KairosSprint',
-//        'KairosTicket',
+        'KairosTicket',
         'KairosUser',
         'ZendDeveloperTools',
     ),

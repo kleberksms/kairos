@@ -78,4 +78,18 @@ return array(
             ),
         ),
     ),
+    'doctrine' => array(
+        'driver' => array(
+            'kairos_ticket_entities' => array(
+                'class' =>'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+                'cache' => 'array',
+                'paths' => array(__DIR__ . '/../src/KairosTicket/Entity')
+            ),
+            'orm_default' => array(
+                'drivers' => array(
+                    'KairosTicket\Entity' => 'kairos_ticket_entities'
+                )
+            )
+        )
+    )
 );

@@ -1,7 +1,7 @@
 <?php
 
 namespace KairosTicket\Entity;
-
+use Doctrine\ORM\Mapping as ORM;
 /**
  * Class Ticket
  * @package KairosTicket\Entity
@@ -12,129 +12,122 @@ class Ticket extends AbstractEntity
 {
 
     /**
-     * @var int
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue
-     */
-    protected $id;
-
-    /**
      * @var string
      * @ORM\Column(type="text")
      */
-    protected $title;
+    private $title;
 
     /**
      * join with solution
      * @var int
      */
-    protected $software;
+    private $software;
 
     /**
      * @var int
-     * @OneToOne(targetEntity="User")
-     * @JoinColumn(name="customer_id", referencedColumnName="id")
+     * @ORM\OneToOne(targetEntity="KairosUser\Entity\User")
+     * @ORM\JoinColumn(name="customer_id", referencedColumnName="id")
      **/
-    protected $customer;
+    private $customer;
 
     /**
      * @var int
-     * @OneToOne(targetEntity="User")
-     * @JoinColumn(name="creator_id", referencedColumnName="id")
+     * @ORM\OneToOne(targetEntity="KairosUser\Entity\User")
+     * @ORM\JoinColumn(name="creator_id", referencedColumnName="id")
      **/
-    protected $creator;
+    private $creator;
 
     /**
      * @var int
-     * @OneToOne(targetEntity="User")
-     * @JoinColumn(name="countersigning_id", referencedColumnName="id")
+     * @ORM\OneToOne(targetEntity="KairosUser\Entity\User")
+     * @ORM\JoinColumn(name="countersigning_id", referencedColumnName="id")
      **/
-    protected $countersigning;
+    private $countersigning;
 
     /**
      * @var int
-     * @OneToOne(targetEntity="User")
-     * @JoinColumn(name="holder_id", referencedColumnName="id")
+     * @ORM\OneToOne(targetEntity="KairosUser\Entity\User")
+     * @ORM\JoinColumn(name="holder_id", referencedColumnName="id")
      **/
-    protected $holder;
+    private $holder;
 
     /**
      * join with files => files
      * @var int
      */
-    protected $file;
+    private $file;
 
     /**
      * @var string
      * @ORM\Column(type="text")
      */
-    protected $description;
+    private $description;
 
     /**
-     * @OneToMany(targetEntity="Ticket", mappedBy="ticket", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="Ticket", mappedBy="ticket", cascade={"persist", "remove"})
      */
-    protected  $ticket_children;
+    private  $ticket_children;
 
     /**
-     * @ManyToOne(targetEntity="Ticket", inversedBy="ticket_children")
-     * @JoinColumn(name="ticket_children", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Ticket", inversedBy="ticket_children")
+     * @ORM\JoinColumn(name="ticket_children", referencedColumnName="id")
      */
-    protected $ticket;
+    private $ticket;
 
     /**
      * @var int
-     * @OneToOne(targetEntity="User")
-     * @JoinColumn(name="closed_by_id", referencedColumnName="id")
+     * @ORM\OneToOne(targetEntity="KairosUser\Entity\User")
+     * @ORM\JoinColumn(name="closed_by_id", referencedColumnName="id")
      **/
-    protected $closed_by;
+    private $closed_by;
 
     /**
      * @var bool
      * @ORM\Column(type="boolean")
      */
-    protected $is_active;
+    private $is_active;
 
     /**
      * @var int
      * @ORM\Column(type="integer")
      */
-    protected $status;
+    private $status;
 
     /**
      * @var int
      * @ORM\Column(type="integer")
      */
-    protected $estimateHours;
+    private $estimateHours;
 
     /**
      * @var int
      * @ORM\Column(type="integer")
      */
-    protected $totalHours;
+    private $totalHours;
 
     /**
      * @var int
      * @ORM\Column(type="integer")
      */
-    protected $estimatePoint;
+    private $estimatePoint;
 
     /**
      * @var int
      * @ORM\Column(type="integer")
      */
-    protected $totalPoint;
+    private $totalPoint;
 
     /**
      * @var float
      * @ORM\Column(type="float")
      */
-    protected $estimateCoast;
+    private $estimateCoast;
 
     /**
      * @var float
      * @ORM\Column(type="float")
      */
-    protected $finalCoast;
+    private $finalCoast;
 
     /**
      * @var int
@@ -325,21 +318,6 @@ class Ticket extends AbstractEntity
         $this->holder = $holder;
     }
 
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param int $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
 
     /**
      * @return boolean

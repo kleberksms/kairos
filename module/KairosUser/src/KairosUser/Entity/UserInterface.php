@@ -12,6 +12,8 @@ interface UserInterface
 
     public function getLastName();
 
+    public function getEmail();
+
     public function getAddress();
 
 }

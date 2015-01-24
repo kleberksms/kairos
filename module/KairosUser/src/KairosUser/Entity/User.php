@@ -30,6 +30,12 @@ class User extends AbstractEntity implements UserInterface
      */
     private $address;
 
+    /**
+     * @var string
+     * @ORM\Column
+     */
+    private $email;
+
 
 
     /**
@@ -78,6 +84,22 @@ class User extends AbstractEntity implements UserInterface
     public function setAddress($address)
     {
         $this->address = $address;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param string $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
     }
 
 

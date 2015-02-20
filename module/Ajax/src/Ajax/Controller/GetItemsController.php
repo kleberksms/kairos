@@ -1,32 +1,32 @@
 <?php
 
-namespace KairosUser\Controller;
+namespace Ajax\Controller;
 
 use Zend\Mvc\Controller\AbstractRestfulController;
 use Zend\EventManager\EventManagerInterface;
 
-class IndexController extends AbstractRestfulController
+class GetItemsController extends AbstractRestfulController
 {
-
+        
     /**
      *
-     * @var array
+     * @var array 
      */
     protected $collectionOptions = array(
         'GET'
     );
-
+    
     /**
      *
-     * @var array
+     * @var array 
      */
     protected $resourceOptions = array(
         'GET'
     );
-
+    
     /**
      * Check if an id is set and the allowed http verb is in array
-     *
+     * 
      * @return array
      */
     protected function _getOptions()
@@ -38,40 +38,40 @@ class IndexController extends AbstractRestfulController
         //die('_getOptions');
         return $this->collectionOptions;
     }
-
+    
     /**
      * Return the allowed http verbs
-     *
+     * 
      * @return Response
      */
     public function options()
     {
         $response = $this->getResponse();
-
+        
         $response->getHeaders()
-            ->addHeaderLine('Allow', implode(',', $this->_getOptions()));
-
+                ->addHeaderLine('Allow', implode(',', $this->_getOptions()));
+        
         return $response;
     }
-
+   
     /**
      * Attach the check options function whenever a request happens
-     *
+     * 
      * @param \Zend\EventManager\EventManagerInterface $events
      */
     public function setEventManager(EventManagerInterface $events)
     {
         parent::setEventManager($events);
-
+        
         $this->events = $events;
-
+        
         //validate the http method
         $events->attach('dispatch', array($this,'checkOptions'), 10);
     }
-
+    
     /**
      * Check if the current request is allowed
-     *
+     * 
      * @param Event $e
      * @return Reponse
      */
@@ -84,10 +84,10 @@ class IndexController extends AbstractRestfulController
 
         return $this->formatResponse(array(), 405);
     }
-
+    
     /**
      * Single Resource
-     *
+     * 
      * @param type $id
      * @return response
      */
@@ -95,19 +95,15 @@ class IndexController extends AbstractRestfulController
     {
         return $this->formatResponse(array(), 405);
     }
-
+    
     /**
      * Multiple Resources
-     *
+     * 
      * @return response
      */
     public function getList()
     {
-        $em = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
-        $repo = $em->getRepository('KairosUser\Entity\User');
-        $u = $repo->findAll();
-        die(var_dump($u));
-        $markers = array(
+       $markers = array(
             array(
                 'lat' => 25.69701,
                 'lon' => -80.299434
@@ -140,7 +136,7 @@ class IndexController extends AbstractRestfulController
                 'lat' => 25.749168,
                 'lon' => -80.201983
             ),
-
+    
             array(
                 'lat' => 25.750197,
                 'lon' => -80.20285
@@ -153,10 +149,10 @@ class IndexController extends AbstractRestfulController
 
         return $this->formatResponse($markers, 200);
     }
-
+    
     /**
      * Create Resource (Post)
-     *
+     * 
      * @param array $data
      * @return response
      */
@@ -164,10 +160,10 @@ class IndexController extends AbstractRestfulController
     {
         return $this->formatResponse(array(), 405);
     }
-
+    
     /**
      * Delete Resource (Delete)
-     *
+     * 
      * @param type $id
      * @return response
      */
@@ -175,10 +171,10 @@ class IndexController extends AbstractRestfulController
     {
         return $this->formatResponse(array(), 405);
     }
-
+    
     /**
      * Update Resource (Put)
-     *
+     * 
      * @param type $id
      * @return response
      */
@@ -186,10 +182,10 @@ class IndexController extends AbstractRestfulController
     {
         return $this->formatResponse(array(), 405);
     }
-
+    
     /**
      * Used to build the ajax response
-     *
+     * 
      * @param type $content
      * @param type $statusCode
      * @return type
@@ -199,8 +195,8 @@ class IndexController extends AbstractRestfulController
         $response = $this->getResponse();
         $response->setStatusCode($statusCode);
         $response
-            ->getHeaders()
-            ->addHeaderLine('Content-Type', 'application/json');
+                ->getHeaders()
+                ->addHeaderLine('Content-Type', 'application/json');
         if (!empty($content) && is_array($content))
         {
             $response->setContent(json_encode($content));
@@ -208,25 +204,25 @@ class IndexController extends AbstractRestfulController
 
         return $response;
     }
-
+    
     /**
      * Gets the current users hudzi token
-     *
+     * 
      * @param type $type
      * @return type
      */
     protected function getUserSocial($type = '')
     {
         $userSocialEntity = $this->getEntityManager()
-            ->getRepository('Application\Entity\UserSocial')
-            ->findOneBy(array(
-                'user' => $this->zfcUserAuthentication()->getIdentity(),
-                'type' => $type
-            ));
+                ->getRepository('Application\Entity\UserSocial')
+                ->findOneBy(array(
+            'user' => $this->zfcUserAuthentication()->getIdentity(),
+            'type' => $type
+        ));
 
         return $userSocialEntity;
     }
-
+    
     /**
      * Return logged in user id
      * @return type
@@ -235,10 +231,10 @@ class IndexController extends AbstractRestfulController
         if(!$this->_user) {
             $this->setUser($this->zfcUserAuthentication()->getIdentity());
         }
-
+        
         return $this->_user;
     }
-
+    
     /**
      * Set logged in user
      * @param Application\Entity\User $user
@@ -250,20 +246,20 @@ class IndexController extends AbstractRestfulController
             $this->_user = $this->zfcUserAuthentication()->getIdentity();
         }
     }
-
+    
     /**
      * Set em
-     *
+     * 
      * @param \Doctrine\ORM\EntityManager $em
      */
     protected function setEntityManager(\Doctrine\ORM\EntityManager $em)
     {
         $this->em = $em;
     }
-
+    
     /**
      * Get em
-     *
+     * 
      * @return \Doctrine\ORM\EntityManager
      */
     protected function getEntityManager()
@@ -271,10 +267,10 @@ class IndexController extends AbstractRestfulController
         if($this->em === null)
         {
             $this->em = $this
-                ->getServiceLocator()
-                ->get('Doctrine\ORM\EntityManager');
+                    ->getServiceLocator()
+                    ->get('Doctrine\ORM\EntityManager');
         }
-
+        
         return $this->em;
     }
 }

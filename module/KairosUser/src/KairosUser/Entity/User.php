@@ -157,11 +157,16 @@ class User  implements UserInterface
     }
 
 
-
+    /**
+     * @todo Make right way Timezone
+     * @return \Datetime
+     *
+     */
     public function getCreated()
     {
         if (!$this->localized) {
-            $this->created->setTimeZone(new \DateTimeZone($this->timezone));
+            //$this->created->setTimeZone(new \DateTimeZone($this->timezone));
+            $this->created->setTimeZone(new \DateTimeZone('America/Sao_Paulo'));
         }
         return $this->created;
     }
@@ -186,10 +191,10 @@ class User  implements UserInterface
         return $hydrator->hydrate($content, $this);
     }
 
-    public function toArray($object)
+    public function toArray()
     {
         $hydrator = new ClassMethods();
-        return $hydrator->extract($object);
+        return $hydrator->extract($this);
     }
 
 } 

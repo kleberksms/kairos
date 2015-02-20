@@ -43,4 +43,6 @@ class UserRepository extends EntityRepository
 
         return $array;
     }
+
+
 } 

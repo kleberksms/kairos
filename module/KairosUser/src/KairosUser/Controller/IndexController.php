@@ -104,54 +104,18 @@ class IndexController extends AbstractRestfulController
     public function getList()
     {
         $em = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+
         $repo = $em->getRepository('KairosUser\Entity\User');
-        $u = $repo->findAll();
-        die(var_dump($u));
-        $markers = array(
-            array(
-                'lat' => 25.69701,
-                'lon' => -80.299434
-            ),
-            array(
-                'lat' => 25.713179,
-                'lon' => -80.290497
-            ),
-            array(
-                'lat' => 25.729513,
-                'lon' => -80.304733
-            ),
-            array(
-                'lat' => 25.732395,
-                'lon' => -80.293897
-            ),
-            array(
-                'lat' => 25.741686,
-                'lon' => -80.214731
-            ),
-            array(
-                'lat' => 25.745983,
-                'lon' => -80.255023
-            ),
-            array(
-                'lat' => 25.748872,
-                'lon' => -80.21523
-            ),
-            array(
-                'lat' => 25.749168,
-                'lon' => -80.201983
-            ),
 
-            array(
-                'lat' => 25.750197,
-                'lon' => -80.20285
-            ),
-            array(
-                'lat' => 25.750542,
-                'lon' => -80.201116
-            )
-        );
+        $finders = $repo->findAll();
 
-        return $this->formatResponse($markers, 200);
+        $users = array();
+
+        foreach($finders as $user){
+            array_push($users,$user->toArray());
+        }
+
+        return $this->formatResponse($users, 200);
     }
 
     /**
